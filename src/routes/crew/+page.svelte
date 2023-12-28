@@ -28,10 +28,10 @@
 	let activeIndex = 0;
 	let activeCrew = crewData[activeIndex];
 
-	const updateSelectedCrewMember = (index: number) => {
-		activeIndex = index;
-		activeCrew = crewData[activeIndex];
-	};
+   $: {
+      activeCrew = crewData[activeIndex]
+   }
+
 </script>
 
 <svelte:head>
@@ -61,7 +61,7 @@
 			{#each crewData as _, index}
 				<button 
                class={`${activeIndex === index && 'active'}`}
-               on:click={() => updateSelectedCrewMember(index)}
+               on:click={() => activeIndex = index}
             ></button>
 			{/each}
 		</div>

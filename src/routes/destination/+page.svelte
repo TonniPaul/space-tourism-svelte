@@ -37,10 +37,9 @@
 	let activeIndex = 0;
 	let activeDestination = destinationData[activeIndex];
 
-   const updateActiveDestination = (index: number) => {
-        activeIndex = index;
-        activeDestination = destinationData[activeIndex];
-    }
+   $: {
+      activeDestination = destinationData[activeIndex]
+   }
 </script>
 
 <svelte:head>
@@ -72,7 +71,7 @@
 				<li>
 					<button
 						class={`destination-btn ${activeIndex === index && 'active'}`}
-						on:click={() => updateActiveDestination(index)}>{data.name}</button
+						on:click={() => activeIndex = index}>{data.name}</button
 					>
 				</li>
 			{/each}
